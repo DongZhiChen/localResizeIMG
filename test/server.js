@@ -8,8 +8,8 @@ window.onerror = function (errMsg, scriptURI, lineNumber, columnNumber, errorObj
             "错误详情：": errorObj
         };
 
-        alert('出错了，下一步将显示错误信息');
-        alert(JSON.stringify(rst, null, 10));
+        // alert('出错了，下一步将显示错误信息');
+        // alert(JSON.stringify(rst, null, 10));
     });
 };
 
@@ -34,25 +34,25 @@ window.onerror = function (errMsg, scriptURI, lineNumber, columnNumber, errorObj
 
 
 document.querySelector('input').addEventListener('change', function () {
-    var that     = this,
+    var that = this,
         progress = document.querySelector('progress');
 
     lrz(that.files[0], {
         width: 800
     })
         .then(function (rst) {
-            var img        = new Image(),
-                div        = document.createElement('div'),
-                p          = document.createElement('p'),
+            var img = new Image(),
+                div = document.createElement('div'),
+                p = document.createElement('p'),
                 sourceSize = toFixed2(that.files[0].size / 1024),
                 resultSize = toFixed2(rst.fileLen / 1024),
-                effect     = parseInt(100 - (resultSize / sourceSize * 100));
+                effect = parseInt(100 - (resultSize / sourceSize * 100));
 
             p.style.fontSize = 13 + 'px';
-            p.innerHTML      = '源文件：<span class="text-danger">!{sourceSize}KB</span> <br>压缩后传输大小：<span class="text-success">!{resultSize}KB (省!{effect}%)</span> '.render({
+            p.innerHTML = '源文件：<span class="text-danger">!{sourceSize}KB</span> <br>压缩后传输大小：<span class="text-success">!{resultSize}KB (省!{effect}%)</span> '.render({
                 sourceSize: sourceSize,
                 resultSize: resultSize,
-                effect    : effect
+                effect: effect
             });
 
             div.className = 'col-sm-6';
@@ -76,7 +76,7 @@ document.querySelector('input').addEventListener('change', function () {
 
                 if (xhr.status === 200) {
                     // 上传成功
-                    img.src        = rst.base64;
+                    img.src = rst.base64;
                     progress.value = 0;
                 } else {
                     // 处理错误
@@ -88,7 +88,7 @@ document.querySelector('input').addEventListener('change', function () {
             };
 
             xhr.onerror = function (err) {
-                alert('未知错误:' + JSON.stringify(err, null, 2));
+                // alert('未知错误:' + JSON.stringify(err, null, 2));
                 div.remove();
                 that.value = null;
             };
@@ -120,7 +120,7 @@ document.querySelector('input').addEventListener('change', function () {
 });
 
 document.querySelector('#version').innerHTML = lrz.version;
-document.querySelector('.UA').innerHTML      = 'UA: ' + navigator.userAgent;
+document.querySelector('.UA').innerHTML = 'UA: ' + navigator.userAgent;
 
 function toFixed2(num) {
     return parseFloat(+num.toFixed(2));

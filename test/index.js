@@ -48,7 +48,7 @@ document.querySelector('input').addEventListener('change', function () {
                 scale = parseInt(100 - (resultSize / sourceSize * 100));
 
             p.style.fontSize = 13 + 'px';
-            p.innerHTML      = '源文件：<span class="text-danger">' +
+            p.innerHTML = '源文件：<span class="text-danger">' +
                 sourceSize + 'KB' +
                 '</span> <br />' +
                 '压缩后传输大小：<span class="text-success">' +
@@ -99,9 +99,9 @@ document.querySelector('input').addEventListener('change', function () {
 });
 
 document.querySelector('#version').innerHTML = lrz.version;
-document.querySelector('.UA').innerHTML      = 'UA: ' + navigator.userAgent;
+document.querySelector('.UA').innerHTML = 'UA: ' + navigator.userAgent;
 
-function toFixed2 (num) {
+function toFixed2(num) {
     return parseFloat(+num.toFixed(2));
 }
 
@@ -129,7 +129,7 @@ String.prototype.render = function (obj) {
  * @param event
  * @returns {boolean}
  */
-function fireEvent (element, event) {
+function fireEvent(element, event) {
     var evt;
 
     if (document.createEventObject) {
